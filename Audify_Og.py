@@ -22,7 +22,7 @@ screen_height = w.winfo_screenheight()
 w.geometry(f"{screen_width}x{screen_height}+0+0")
 
 w.title('Audify')
-w.iconbitmap('ico3.ico')
+w.iconbitmap('img/ico3.ico')
 w.resizable(height=True, width=True)
 w.bind('<Escape>', lambda e: w.destroy())
 
@@ -72,11 +72,7 @@ def audify():
     else:
 
         txt = Label(
-            w,
-            
-            
-
-        )
+            w, )
 
         b2.place_forget()
         progress = ttk.Progressbar(
@@ -109,7 +105,6 @@ def audify():
             showinfo(
                 title='Info', message='This App needs Internet Connectivity Make Sure your connected to Internet Before Uploading Image')
 
-            
             text = pytesseract.image_to_string(filename, lang='Malayalam')
             progress['value'] = 100
             ob = gTTS(text)
@@ -130,6 +125,7 @@ def sel():
     if (str(v.get()) == '2'):
         return 'eng'
 
+
 def resize_bg(event):
     global bg_image, bg_photo
     new_width = event.width
@@ -137,7 +133,9 @@ def resize_bg(event):
     bg_image = bg_image.resize((new_width, new_height), Image.ANTIALIAS)
     bg_photo = ImageTk.PhotoImage(bg_image)
     bg_label.config(image=bg_photo)
-bg_image = Image.open("i1.jpg")
+
+
+bg_image = Image.open("img/i1.jpg")
 
 
 bg_photo = ImageTk.PhotoImage(bg_image)
@@ -148,22 +146,25 @@ bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 w.bind('<Configure>', resize_bg)
 
 
-//create hek=llo world in python?
-
-label = Label(w, text='Select Language Of Image Text:',borderwidth=0,highlightthickness=0,border=0)
+label = Label(w, text='Select Language Of Image Text:',
+              borderwidth=0, highlightthickness=0, border=0)
 label.place(x=500, y=160)
-label3 = Label(w, text='Select a image File to convert Audio',borderwidth=0,highlightthickness=0,border=0)
+label3 = Label(w, text='Select a image File to convert Audio',
+               borderwidth=0, highlightthickness=0, border=0)
 label3.place(x=500, y=80)
 v = IntVar()
-rd1 = Radiobutton(w, text="malayalam", variable=v, value='1', command=sel,borderwidth=0,highlightthickness=0,border=0)
+rd1 = Radiobutton(w, text="malayalam", variable=v, value='1',
+                  command=sel, borderwidth=0, highlightthickness=0, border=0)
 rd1.place(x=560, y=185)
-rd2 = Radiobutton(w, text="English", variable=v, value='2', command=sel,borderwidth=0,highlightthickness=0,border=0)
+rd2 = Radiobutton(w, text="English", variable=v, value='2',
+                  command=sel, borderwidth=0, highlightthickness=0, border=0)
 rd2.place(x=650, y=185)
 b = Button(w, text='Open File', command=open)
 b.place(x=600, y=120)
-label2 = Label(w, text='Preview of Image:',borderwidth=0,highlightthickness=0,border=0)
+label2 = Label(w, text='Preview of Image:', borderwidth=0,
+               highlightthickness=0, border=0)
 label2.place(x=500, y=250)
 b1 = Button(w, text='Audify', command=audify)
-b1.place(x=680, y=495) 
+b1.place(x=680, y=495)
 b2 = Button(w, text='Play')
 w.mainloop()
